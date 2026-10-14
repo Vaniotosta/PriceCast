@@ -106,17 +106,38 @@ with aba2:
     else:
         st.plotly_chart(px.scatter(hist, x="InvoiceDate", y="Price", title="Preços observados nas vendas"),
                         width="stretch")
-
 with aba3:
     if METRICAS.exists():
-        m = json.loads(METRICAS.read_text())
-        st.write(f"Teste a partir de **{m['data_corte']}** — {m['registros_teste']:,} vendas "
-                 f"({m['produtos_ineditos_no_teste']} produtos inéditos).")
-        tab = pd.DataFrame(m["tabela"])
-        st.dataframe(tab.round(3), width="stretch")
-        graf = px.bar(tab, x="grupo", y="MAE", color="modelo", barmode="group",
-                      title="Erro médio (MAE, em £) — menor é melhor")
-        st.plotly_chart(graf, width="stretch")
-        st.caption(f"Cobertura da faixa 80%: {m['cobertura_faixa']}")
+        try:
+            conteudo_metricas = METRICAS.read_text(encoding="utf-8-sig")
+        except UnicodeDecodeError:
+            conteudo_metricas = METRICAS.read_text(encoding="cp1252")
+
+        try:
+            m = json.loads(conteudo_metricas)
+
+            st.write(
+                f"Teste a partir de **{m['data_corte']}** — "
+                f"{m['registros_teste']:,} vendas "
+                f"({m['produtos_ineditos_no_teste']} produtos inéditos)."
+            )
+
+            tab = pd.DataFrame(m["tabela"])
+            st.dataframe(tab.round(3), width="stretch")
+
+            graf = px.bar(
+                tab,
+                x="grupo",
+                y="MAE",
+                color="modelo",
+                barmode="group",
+                title="Erro médio (MAE, em £) — menor é melhor",
+            )
+            st.plotly_chart(graf, width="stretch")
+
+            st.caption(f"Cobertura da faixa 80%: {m['cobertura_faixa']}")
+
+        except (json.JSONDecodeError, KeyError, TypeError) as erro:
+            st.error(f"Não foi possível interpretar as métricas: {erro}")
     else:
         st.info("Rode `python scripts/treinar.py` para gerar as métricas.")
