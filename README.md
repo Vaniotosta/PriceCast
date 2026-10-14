@@ -1,4 +1,5 @@
 # PriceCast — Previsão de Preços e Inteligência Comercial
+lINK DO APP: https://pricecast-jq6cw55ww3jsf2nc4btquo.streamlit.app
 
 Projeto de Ciência de Dados que prevê o preço unitário de produtos a partir de vendas históricas
 (*Online Retail II*, UCI) e mostra os resultados em um painel Streamlit.
