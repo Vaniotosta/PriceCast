@@ -1,0 +1,66 @@
+{
+  "data_corte": "2011-10-01",
+  "registros_treino": 838431,
+  "registros_teste": 164783,
+  "produtos_ineditos_no_teste": 144,
+  "tabela": [
+    {
+      "grupo": "Todos",
+      "modelo": "Mediana por produto (referência)",
+      "registros": 164783,
+      "MAE": 0.7849521491901471,
+      "RMSE": 2.090786157893571,
+      "R2": 0.6328321967756023,
+      "erro_pct_mediano": 0.0
+    },
+    {
+      "grupo": "Todos",
+      "modelo": "PriceCast v2",
+      "registros": 164783,
+      "MAE": 0.694822023612474,
+      "RMSE": 1.6346296846627901,
+      "R2": 0.7755683400948095,
+      "erro_pct_mediano": 10.351781916390959
+    },
+    {
+      "grupo": "Conhecidos",
+      "modelo": "Mediana por produto (referência)",
+      "registros": 156887,
+      "MAE": 0.6626266676015221,
+      "RMSE": 1.7666485537795762,
+      "R2": 0.7226813894589166,
+      "erro_pct_mediano": 0.0
+    },
+    {
+      "grupo": "Conhecidos",
+      "modelo": "PriceCast v2",
+      "registros": 156887,
+      "MAE": 0.597652923751846,
+      "RMSE": 1.3410013761702968,
+      "R2": 0.8402145838086346,
+      "erro_pct_mediano": 9.536954397959482
+    },
+    {
+      "grupo": "Inéditos",
+      "modelo": "Mediana por produto (referência)",
+      "registros": 7896,
+      "MAE": 3.215458459979737,
+      "RMSE": 5.405053474744071,
+      "R2": -0.345891716398377,
+      "erro_pct_mediano": 57.57575757575758
+    },
+    {
+      "grupo": "Inéditos",
+      "modelo": "PriceCast v2",
+      "registros": 7896,
+      "MAE": 2.625491801960288,
+      "RMSE": 4.475745547076452,
+      "R2": 0.0771291962828543,
+      "erro_pct_mediano": 43.17357832465383
+    }
+  ],
+  "cobertura_faixa": {
+    "conhecidos": 0.7453517499856585,
+    "ineditos": 0.7425278622087133
+  }
+}

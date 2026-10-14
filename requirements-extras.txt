@@ -1,0 +1,4 @@
+# Opcional (do README original): acompanhamento de experimentos, validação de dados, séries temporais
+mlflow
+pandera
+statsmodels
